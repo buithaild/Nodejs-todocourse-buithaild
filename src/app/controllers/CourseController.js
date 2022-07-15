@@ -13,5 +13,25 @@ class CourseController {
             .catch(next)
 
     }
+
+    // [GET] /courses/create
+    create(req, res, next) {
+        res.render('courses/create');
+    }
+
+    // [POST] /courses/store
+    store(req, res, next) {
+        const formData = req.body;
+        formData.image = `https://i.ytimg.com/vi/${req.body.videoId}/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCML-byK5TPhWN_-ZuZal4h5KasYw`
+        const course = new Course(formData);
+        course.save()
+            .then(() => res.redirect('/'))
+            .catch(error => {
+
+            });
+
+
+    }
+
 }
 module.exports = new CourseController();
