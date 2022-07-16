@@ -10,7 +10,7 @@ class CourseController {
             .then(course =>
                 res.render('courses/show', { course: mongoosesToObject(course) })
             )
-            .catch(next)
+            .catch(next);
 
     }
 
